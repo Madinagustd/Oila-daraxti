@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Xamidovlar oilasi — Oila daraxti</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--wood:#6b4423;--wood2:#8a5a2b;--leaf:#2e7d32;--ink:#2a1a0e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);font-family:"Playfair Display",Georgia,serif;min-height:100vh;
+background:linear-gradient(#9fd8f5 0,#d8f1fb 45%,#e9f6d8 100%);background-attachment:fixed}
+header{text-align:center;padding:26px 14px 4px;position:relative;z-index:2}
+h1{display:inline-block;margin:0;padding:10px 26px;font-weight:900;font-size:clamp(28px,7.5vw,64px);color:#fff3d6;background:linear-gradient(#8a5a2b,#6b4423);border:5px solid #4a2d14;border-radius:14px;box-shadow:0 8px 0 #4a2d14;text-shadow:2px 3px 0 #3a210e;letter-spacing:1px}
+.sub{margin:18px 0 0;font-size:16px;font-style:italic;color:#24531f}
+.hint{text-align:center;font-size:13px;color:#335;opacity:.7;margin:4px 0 0}
+.wrap{overflow-x:auto;padding:30px 12px 0;-webkit-overflow-scrolling:touch}
+.tree{position:relative;width:max-content;min-width:100%;margin:0 auto;display:flex;justify-content:center;padding-top:50px}
+.tree::before{content:"";position:absolute;left:0;right:0;top:-10px;height:330px;pointer-events:none;
+background:radial-gradient(ellipse 280px 130px at 50% 150px,#2e7d32 0,#388e3c 60%,transparent 62%),
+radial-gradient(ellipse 200px 100px at calc(50% - 190px) 190px,#43a047 0,#4caf50 60%,transparent 62%),
+radial-gradient(ellipse 200px 100px at calc(50% + 190px) 190px,#43a047 0,#4caf50 60%,transparent 62%),
+radial-gradient(ellipse 150px 80px at calc(50% - 90px) 90px,#1b5e20 0,#2e7d32 60%,transparent 62%),
+radial-gradient(ellipse 150px 80px at calc(50% + 90px) 90px,#1b5e20 0,#2e7d32 60%,transparent 62%);opacity:.9}
+.tree ul{display:flex;justify-content:center;padding:34px 0 0;margin:0;position:relative}
+.tree>ul{padding-top:0;position:relative}
+.tree li{list-style:none;text-align:center;position:relative;padding:34px 8px 0}
+.tree>ul>li{padding-top:0}
+.tree li::before,.tree li::after{content:"";position:absolute;top:0;right:50%;width:50%;height:34px;border-top:8px solid var(--wood)}
+.tree li::after{right:auto;left:50%;border-left:8px solid var(--wood)}
+.tree li:only-child::before,.tree li:only-child::after{display:none}
+.tree li:only-child{padding-top:34px}
+.tree>ul>li::before,.tree>ul>li::after{display:none}
+.tree li:first-child::before,.tree li:last-child::after{border:0 none}
+.tree li:last-child::before{border-right:8px solid var(--wood);border-radius:0 22px 0 0}
+.tree li:first-child::after{border-radius:22px 0 0 0}
+.tree ul ul::before{content:"";position:absolute;top:0;left:50%;height:34px;margin-left:-4px;border-left:8px solid var(--wood)}
+.couple{display:inline-flex;align-items:center;gap:4px;position:relative;z-index:1}
+.heart{font-size:20px;color:#d81b60}
+.card{width:130px;padding:9px 8px 10px;border:3px solid #1b5e20;border-radius:6px 34px 6px 34px;background:linear-gradient(135deg,#d7f5c9,#9ad98a);box-shadow:0 5px 0 #2e7d32,0 8px 10px #0003;position:relative;transition:transform .15s}
+.card:hover{transform:translateY(-3px) rotate(-1.5deg)}
+.card.f{background:linear-gradient(135deg,#ffe3ee,#f8b8cf);border-color:#ad1457;box-shadow:0 5px 0 #c2185b,0 8px 10px #0003}
+.card.d{background:linear-gradient(135deg,#f7dba7,#d9a45a);border-color:#8a5a2b;box-shadow:0 5px 0 #8a5a2b,0 8px 10px #0003}
+.card .n{font-weight:700;font-size:13px;line-height:1.2}
+.card .y{font-size:11.5px;margin-top:3px}
+.card .r{font-size:10.5px;margin-top:5px;padding-top:4px;border-top:1px dashed #0005;font-style:italic}
+.card.d .n::after{content:" 🍂"}
+.card.me{width:142px;background:radial-gradient(circle at 30% 25%,#ffe36b,#f5b800);border:4px solid #c62828;border-radius:50% 50% 46% 46%/40% 40% 60% 60%;padding:14px 8px 16px;box-shadow:0 6px 0 #b71c1c,0 0 22px #ffd54f;z-index:2}
+.card.me::after{content:"🍎 MEN";position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:#c62828;color:#fff;font-size:11px;padding:1px 9px;border-radius:10px;letter-spacing:1px;white-space:nowrap}
+html{scroll-behavior:smooth}
+.card{cursor:pointer}
+.card.on{outline:4px solid #f5b800;transform:translateY(-4px) rotate(-2deg)}
+#info{position:sticky;bottom:0;z-index:20;background:linear-gradient(#6b4423,#4a2d14);color:#fff3d6;border-top:5px solid #2e7d32;padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));font-size:16px;line-height:1.45;min-height:62px}
+#info b{font-size:19px;color:#ffe36b}
+.fams{max-width:1000px;margin:34px auto 0;padding:0 14px}
+.fams h2{text-align:center;font-weight:900;font-size:clamp(26px,6vw,40px);margin:0 0 20px;color:#fff3d6;background:linear-gradient(#8a5a2b,#6b4423);border:4px solid #4a2d14;border-radius:12px;padding:8px;box-shadow:0 6px 0 #4a2d14}
+.fam{background:#f4ffe9;border:3px solid #2e7d32;border-radius:6px 28px 6px 28px;box-shadow:0 6px 0 #2e7d32;margin:0 0 24px;padding:0 0 12px;overflow:hidden}
+.fam h3{margin:0 0 8px;padding:10px 16px;background:#2e7d32;color:#fff;font-size:20px}
+.fl{margin:8px 16px 6px;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#6b4423}
+.mr{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px}
+.mini{flex:1 1 230px;border:2px solid #8a5a2b;border-radius:10px;background:#fff;padding:7px 10px;font-size:14px}
+.mini.f{background:#ffeef5;border-color:#ad1457}
+.mini.d{background:#f7e6c4}
+.mini.me{background:#ffe36b;border:3px solid #c62828}
+.mini small{display:block;font-style:italic;color:#6b4423}
+.ground{margin-top:36px;height:90px;background:linear-gradient(#5aa84a,#3d7a32 40%,#5b3a1a 41%,#3e2610);position:relative}
+.ground::before{content:"🌱  🌼  🌿  🍄  🌱  🌼  🌿  🌱  🌼  🍄  🌿";position:absolute;top:-22px;left:0;right:0;text-align:center;font-size:24px;white-space:nowrap;overflow:hidden}
+.ground p{margin:0;padding-top:24px;text-align:center;color:#fff3d6;font-size:13px;letter-spacing:1px}
+</style></head><body>
+<header>
+<h1>Xamidovlar oilasi</h1>
+<p class="sub">🌳 Oila daraxti · 5 avlod · kartani bosing 🌳</p>
+</header>
+<p class="hint">← barmoq bilan o‘ngga-chapga suring →</p>
+<div class="wrap"><div class="tree" id="tree"></div></div>
+<div id="info">Kartani bosing — ota-onasi, turmush o‘rtog‘i va farzandlari shu yerda chiqadi.</div>
+<section class="fams"><h2>Oilalar va farzandlar</h2><div id="fams"></div></section>
+<div class="ground"><p>Ota-bobolar xotirasi — avlodlar g‘ururi · 🍂 marhum/marhuma</p></div>
+<script>
+var p=function(n,y,g,d,me){return{n:n,y:y,g:g,d:d,me:me}};
+var T={a:p("Xamidov Saidkarim","1903 – 1974","m",1),b:p("Xamidova Xosiyat","1926 – 2022","f",1),k:[
+{a:p("Xamidov Sayfulla","1947 – tirik","m")},
+{a:p("Xamidov Muxtor","1949 – 1995","m",1)},
+{a:p("Xamidov Saidahmad","1952 (1-sent.) – 2013 (27-okt.)","m",1),b:p("Xamidova Mapura","1953 (4-fev.) – tirik","f"),k:[
+ {a:p("Xamidov Sultonxo‘ja","1975 (19-iyun) · tirik","m"),b:p("Xamidova Saodat (Sayyora)","1981 (22-iyun) · tirik","f"),k:[
+  {a:p("Saidahmadxojayev Saidazim","2002 (3-yan.)","m")},
+  {a:p("Saidahmadxojayeva Sevara","2004 (9-yan.) · turmush qurgan","f"),k:[
+   {a:p("Muhammadfotix","2025 (27-may)","m")},
+   {a:p("Osiyo","2026 (10-sent.)","f")}]},
+  {a:p("Saidahmadxojayev Nilufar","2018 (20-sent.)","f")}]},
+ {a:p("Xamidov Baxtiyor","1978 (8-fev.) · tirik","m"),b:p("Xamidova Nodira","1980 (13-yan.) · tirik","f"),k:[
+  {a:p("Saidahmadxojayeva Mavluda","2003 (9-iyun) · turmush qurgan","f")},
+  {a:p("Saidahmadxojayeva Munisa","2006 (20-apr.) · turmush qurgan","f")},
+  {a:p("Saidahmadxojayev Baxrom","2007 (9-dek.)","m")},
+  {a:p("Saidahmadxojayev Saidahror","2018 (12-iyul)","m")}]},
+ {a:p("Xamidova Gulchehra","1980 (13-avg.) · tirik","f"),k:[
+  {a:p("Akbarova Iroda","2019 (aprel)","f")}]},
+ {a:p("Xamidov Obid","1982 (12-iyun) · tirik","m"),b:p("Xamidova Muyassar","1983 (21-mart) · tirik","f"),k:[
+  {a:p("Saidahmadxojayev Saidakbar","2007 (29-okt.)","m")},
+  {a:p("Saidahmadxojayeva Madina","2009 (15-iyul)","f",0,1)},
+  {a:p("Saidahmadxojayeva Muslima","2013 (1-fev.)","f")},
+  {a:p("Saidahmadxojayev Muhammadamin","2019 (12-apr.)","m")}]}
+]},
+{a:p("Xamidov Nosir","1959 – 2013 (24-noy.)","m",1)},
+{a:p("Xamidov Raxmat","1964 – 2026","m",1)},
+{a:p("Xamidova Oyto‘ra","1955 – tirik","f")},
+{a:p("Xamidova Mastura","1957 (1-fev.) – tirik","f")},
+{a:p("Xamidova Matluba","1963 – 2025","f",1)}
+]};
+var P=[],R={};
+function fn(x){return x.n.split(" ")[1]||x.n}
+function card(x,rel){
+ var r=rel?'<div class="r">'+rel+'</div>':'';
+ if(x.id==null){x.id=P.length;P.push(x)}
+ return '<div class="card '+x.g+(x.d?' d':'')+(x.me?' me':'')+'" data-id="'+x.id+'"><div class="n">'+x.n+'</div><div class="y">'+x.y+'</div>'+r+'</div>';
+}
+function node(t,par){
+ var rel='';
+ if(par){var ps=[par.a].concat(par.b?[par.b]:[]).map(fn).join(' va ');rel=(t.a.g=='m'?'O‘g‘li':'Qizi')+': '+ps+'ning farzandi';}
+ var h='<li><div class="couple">'+card(t.a,rel);
+ if(t.b){h+='<span class="heart">♥</span>'+card(t.b,(t.b.g=='f'?'Rafiqasi: ':'Eri: ')+fn(t.a))}
+ h+='</div>';
+ var rec={par:par?[par.a].concat(par.b?[par.b]:[]):[],kids:(t.k||[]).map(function(c){return c.a}),sp:t.b};
+ R[t.a.id]=rec; if(t.b)R[t.b.id]={par:[],kids:rec.kids,sp:t.a};
+ if(t.k&&t.k.length){h+='<ul>'+t.k.map(function(c){return node(c,t)}).join('')+'</ul>'}
+ return h+'</li>';
+}
+document.getElementById('tree').innerHTML='<ul>'+node(T,null)+'</ul>';
+
+function show(id){
+ document.querySelectorAll('.card.on').forEach(function(e){e.classList.remove('on')});
+ var el=document.querySelector('.card[data-id="'+id+'"]'); if(el)el.classList.add('on');
+ var x=P[id],r=R[id]||{par:[],kids:[]};
+ var t='<b>★ '+x.n+'</b>'+(x.d?' 🍂':'')+'<br>'+x.y;
+ if(r.par.length)t+='<br>Ota-onasi: '+r.par.map(function(q){return q.n}).join(' va ');
+ if(r.sp)t+='<br>'+(x.g=='f'?'Eri: ':'Rafiqasi: ')+r.sp.n;
+ t+=r.kids.length?'<br>Farzandlari ('+r.kids.length+'): '+r.kids.map(function(q){return q.n}).join(', '):'<br>Farzandi yo‘q (hozircha)';
+ document.getElementById('info').innerHTML=t;
+}
+document.getElementById('tree').addEventListener('click',function(e){
+ var c=e.target.closest('.card'); if(c)show(+c.dataset.id);
+});
+function mini(x,rel){return '<div class="mini '+x.g+(x.d?' d':'')+(x.me?' me':'')+'"><b>'+x.n+'</b>'+(x.d?' 🍂':'')+'<small>'+x.y+(rel?' · '+rel:'')+'</small></div>'}
+var F=[];(function w(t){if(t.k&&t.k.length){F.push(t);t.k.forEach(w)}})(T);
+document.getElementById('fams').innerHTML=F.map(function(t){
+ var title=t.b?fn(t.a)+' va '+fn(t.b)+' oilasi':fn(t.a)+' va farzandlari';
+ var parents=mini(t.a,t.b?'':'')+(t.b?mini(t.b):'');
+ var kids=t.k.map(function(c){return mini(c.a,c.a.g=='m'?'O‘g‘li':'Qizi')}).join('');
+ return '<div class="fam"><h3>★ '+title+'</h3><div class="fl">Ota-ona</div><div class="mr">'+parents+'</div><div class="fl">Farzandlari ('+t.k.length+')</div><div class="mr">'+kids+'</div></div>';
+}).join('');
+</script>
+</body></html>
